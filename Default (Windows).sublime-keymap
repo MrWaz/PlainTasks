@@ -2,5 +2,21 @@
   { "keys": ["ctrl+d"], "command": "complete","context": [{ "key": "selector", "operator": "equal", "operand": "text.todo" }] },
   { "keys": ["ctrl+enter"], "command": "new","context": [{ "key": "selector", "operator": "equal", "operand": "text.todo" }] },
   { "keys": ["ctrl+i"], "command": "new","context": [{ "key": "selector", "operator": "equal", "operand": "text.todo" }] },
-  { "keys": ["ctrl+shift+a"], "command": "archive","context": [{ "key": "selector", "operator": "equal", "operand": "text.todo" }] }
+  { "keys": ["ctrl+shift+a"], "command": "archive","context": [{ "key": "selector", "operator": "equal", "operand": "text.todo" }] },
+  { "keys": ["tab"], "command": "indent", "context": [
+    { "key": "selector", "operator": "equal", "operand": "text.todo" },
+    { "key": "preceding_text", "operator": "regex_match", "operand": "^( *|\\t*)(\\-|\\+|\\✓|\\✔|\\☑|\\❍|\\❑|\\■|\\□|\\☐|\\▪|\\▫|\\–|\\—|\\＿)(.*)", "match_all": true },
+    { "key": "auto_complete_visible", "operator": "equal", "operand": false},
+    { "key": "last_command", "operator": "not_equal", "operand": "insert_best_completion" }] },
+  { "keys": ["tab"], "command": "indent", "context": [
+    { "key": "selector", "operator": "equal", "operand": "keyword.control.header.todo" },            
+    { "key": "preceding_text", "operator": "regex_match", "operand": "^( *|\\t*)(.*)", "match_all": true },
+    { "key": "auto_complete_visible", "operator": "equal", "operand": false},
+    { "key": "last_command", "operator": "not_equal", "operand": "insert_best_completion" }] },
+  { "keys": ["shift+tab"], "command": "unindent", "context": [
+    { "key": "selector", "operator": "equal", "operand": "text.todo" },
+    { "key": "preceding_text", "operator": "regex_match", "operand": "^( +|\\t+)(\\-|\\+|\\✓|\\✔|\\☑|\\❍|\\❑|\\■|\\□|\\☐|\\▪|\\▫|\\–|\\—|\\＿)(.*)", "match_all": true }] },
+  { "keys": ["shift+tab"], "command": "unindent", "context": [   
+    { "key": "selector", "operator": "equal", "operand": "keyword.control.header.todo" },
+    { "key": "preceding_text", "operator": "regex_match", "operand": "^( +|\\t+)(.*)", "match_all": true }] }
 ]
